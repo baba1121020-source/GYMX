@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - GymX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+  <script type="module" src="script1.js"></script>
+</head>
+<body>
+  <div class="signup-container">
+    <img src="https://img.icons8.com/color/96/000000/dumbbell.png" alt="GymX Logo" style="display:block;margin:0 auto 18px auto;width:64px;height:64px;cursor:pointer;" onclick="window.location.href='gym2.html'">
+    <h2>Sign Up</h2>
+    <input type="email" id="signup-email" placeholder="Email" required>
+    <input type="password" id="signup-password" placeholder="Password" required>
+    <button id="signup-btn">Sign Up</button>
+    <button id="google-signup-btn" style="background:linear-gradient(135deg,#4285F4,#34A853,#FBBC05,#EA4335);color:#fff;margin-top:10px;width:100%;padding:14px 0;border:none;border-radius:7px;font-size:17px;font-weight:bold;box-shadow:0 4px 12px rgba(66,133,244,0.10);cursor:pointer;">
+      <img src="https://img.icons8.com/color/24/000000/google-logo.png" style="vertical-align:middle;margin-right:8px;"> Sign Up with Google
+    </button>
+    <div class="signup-message" id="signup-message"></div>
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js';
+      import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js';
+      import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js';
+      const firebaseConfig = {
+        apiKey: "AIzaSyDexZBi7JfkLQYhiyib_a26ILMkkepmZLk",
+        authDomain: "gymx-42c38.firebaseapp.com",
+        projectId: "gymx-42c38",
+        storageBucket: "gymx-42c38.firebasestorage.app",
+        messagingSenderId: "871427638541",
+        appId: "1:871427638541:web:240f13929d674ca3bedc44"
+      };
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getDatabase(app);
+      document.getElementById('google-signup-btn').addEventListener('click', async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+          const result = await signInWithPopup(auth, provider);
+          const user = result.user;
+          await set(ref(db, 'users/' + user.uid), { email: user.email, name: user.displayName, photoUrl: user.photoURL });
+          document.getElementById('signup-message').innerText = 'Google sign up successful! Redirecting...';
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 1200);
+        } catch (error) {
+          if (error.code === 'auth/popup-closed-by-user') {
+            document.getElementById('signup-message').innerText = 'Google sign-in was cancelled. Please try again.';
+          } else {
+            document.getElementById('signup-message').innerText = error.message;
+          }
+        }
+      });
+    </script>
+  </div>
+  <!-- All JS moved to script1.js -->
+</body>
+</html>

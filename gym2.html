@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium GymX Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style1.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="style1.css">
+<script src="script1.js"></script>
+</head>
+<body>
+<!-- Signup Modal (CSS and JS moved to style1.css and script1.js) -->
+
+<!-- Navbar -->
+<nav id="navbar">
+  <div class="logo">
+    <img src="https://img.icons8.com/color/48/000000/dumbbell.png" alt="GymX Logo" style="vertical-align:middle;width:32px;height:32px;margin-right:8px;">
+    GymX
+  </div>
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul id="nav-list">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Price</a></li>
+    <li><a href="#bmi">BMI Calculator</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero Section -->
+<header id="home">
+  <video autoplay muted loop id="hero-video">
+    <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to GymX</h1>
+    <p>Your fitness journey starts here.</p>
+    <a href="#contact">Join Now</a>
+  </div>
+</header>
+
+<!-- About Section -->
+<section id="about">
+  <img src="https://images.saymedia-content.com/.image/t_share/MTc1MTI3NjQwOTk3NTA0MDk1/difference-between-fitness-centers-gyms-and-health-clubs.jpg" alt="Gym">
+  <div class="about-text">
+    <h2>About Us</h2>
+    <p>GymX is the ultimate fitness destination in Noida, offering state-of-the-art equipment, personal trainers, and a community that motivates you to achieve your fitness goals.</p>
+    <p>Whether you want to build muscle, lose weight, or stay healthy, GymX provides customized plans to suit your lifestyle.</p>
+  </div>
+</section>
+
+<!-- Services Section (Auto-Slide Carousel) -->
+<section id="services">
+  <h2>Our Premium Services</h2>
+  <div class="service-slider-wrapper">
+    <div class="service-slider" id="service-slider">
+      <div class="service-card card-animate">
+        <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/96/000000/external-bath-spa-flaticons-lineal-color-flat-icons.png"/>
+        <h3>Hot Bath</h3>
+        <p>Relax and rejuvenate your body with our hot bath therapy.</p>
+      </div>
+      <div class="service-card card-animate">
+        <img src="https://img.icons8.com/color/96/000000/spa.png"/>
+        <h3>Spa</h3>
+        <p>Pamper yourself with luxurious spa treatments.</p>
+      </div>
+      <div class="service-card card-animate">
+        <img src="https://img.icons8.com/color/96/000000/exercise.png"/>
+        <h3>Exercise</h3>
+        <p>State-of-the-art equipment for all fitness levels.</p>
+      </div>
+      <div class="service-card card-animate">
+        <img src="https://img.icons8.com/color/96/000000/heart-with-pulse.png"/>
+        <h3>Cardio</h3>
+        <p>Boost your stamina and heart health with cardio workouts.</p>
+      </div>
+      <div class="service-card card-animate">
+        <img src="https://img.icons8.com/color/96/000000/dancing.png"/>
+        <h3>Zumba</h3>
+        <p>Fun and energetic Zumba sessions for all members.</p>
+      </div>
+      <div class="service-card card-animate">
+        <img src="https://img.icons8.com/color/96/000000/training.png"/>
+        <h3>Personal Trainer</h3>
+        <p>Get personalized training programs for your goals.</p>
+      </div>
+      <div class="service-card card-animate">
+        <img src="https://img.icons8.com/color/96/000000/food.png"/>
+        <h3>Diet Chart</h3>
+        <p>Customized nutrition plans to match your fitness goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing">
+  <h2>Price Plans</h2>
+  <div class="toggle-container">
+    <span>Monthly</span>
+    <label class="switch">
+      <input type="checkbox" id="pricing-toggle">
+      <span class="slider round"></span>
+    </label>
+    <span>Yearly</span>
+  </div>
+  <div class="pricing-cards">
+    <div class="pricing-card card-animate" data-monthly="₹999" data-yearly="₹9999">
+      <h3>Basic Plan</h3>
+      <p>Access to gym equipment</p>
+      <p class="price"><strong>₹999 / month</strong></p>
+      <button>Choose Plan</button>
+    </div>
+    <div class="pricing-card card-animate" data-monthly="₹1499" data-yearly="₹14999">
+      <h3>Standard Plan</h3>
+      <p>Gym + Group Classes</p>
+      <p class="price"><strong>₹1499 / month</strong></p>
+      <button>Choose Plan</button>
+    </div>
+    <div class="pricing-card card-animate" data-monthly="₹2499" data-yearly="₹24999">
+      <h3>Premium Plan</h3>
+      <p>All Access + Personal Trainer</p>
+      <p class="price"><strong>₹2499 / month</strong></p>
+      <button>Choose Plan</button>
+    </div>
+  </div>
+</section>
+
+<!-- BMI Calculator Section -->
+<section id="bmi">
+  <h2>BMI Calculator</h2>
+  <div class="bmi-container">
+    <div class="bmi-form">
+      <label>Name:</label>
+      <input type="text" id="name" placeholder="Your Name" required>
+
+      <label>Weight:</label>
+      <input type="number" id="weight" placeholder="Weight" required>
+      <select id="weight-unit">
+        <option value="kg">kg</option>
+        <option value="lb">lb</option>
+      </select>
+
+      <label>Height:</label>
+      <input type="text" id="height" placeholder="5'11" required>
+
+      <label>Age:</label>
+      <input type="number" id="age" placeholder="Age" required>
+
+      <label>Gender:</label>
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label>Activity Level:</label>
+      <select id="activity">
+        <option value="1.2">Sedentary</option>
+        <option value="1.375">Light</option>
+        <option value="1.55">Moderate</option>
+        <option value="1.725">Active</option>
+        <option value="1.9">Very Active</option>
+      </select>
+
+      <label>Fitness Goal:</label>
+      <select id="goal">
+        <option value="maintain">Maintain Weight</option>
+        <option value="lose">Lose Weight</option>
+        <option value="gain">Gain Muscle</option>
+      </select>
+
+      <button id="calculate">Calculate</button>
+    </div>
+
+    <div class="bmi-result hidden" id="results">
+      <h3>Results</h3>
+      <p id="bmiResult"></p>
+      <p id="bodyFatResult"></p>
+      <p id="caloriesResult"></p>
+      <canvas id="bmi-chart" width="400" height="200"></canvas>
+      <button id="downloadPDF">Download PDF</button>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-section-wrapper" style="display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:40px;margin-top:30px;">
+    <div class="contact-form" style="background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(255,0,0,0.18);padding:32px;max-width:400px;width:100%;min-width:280px;">
+      <h3 style="color:#e60000;text-align:center;margin-bottom:18px;">Fill the Form</h3>
+      <!-- Embedded Google Form -->
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdPp8B1y2_nB2Xkfcrbn6UE5Gb1gpLULD6-p49S974jZZDv4A/viewform?embedded=true" width="100%" height="500" frameborder="0" style="background:#fff;border-radius:12px;border:2px solid #e60000;box-shadow:0 4px 16px rgba(255,0,0,0.10);">Loading…</iframe>
+    </div>
+    <div class="contact-map" style="flex:1;min-width:320px;max-width:600px;display:flex;justify-content:center;align-items:center;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.123123!2d77.315215!3d28.570315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce4ed89abcdef%3A0xabcdef!2sNoida%20Sector%2015%2C%20UP%2C%20India!5e0!3m2!1sen!2sin!4v1692071800000!5m2!1sen!2sin" width="100%" height="500" style="border:0;border-radius:16px;box-shadow:0 4px 16px rgba(255,0,0,0.10);" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div>
+      <p>&copy; 2025 GymX. All Rights Reserved.</p>
+      <div class="social-icons">
+        <a href="#"><img src="https://img.icons8.com/color/48/000000/facebook.png"/></a>
+        <a href="#"><img src="https://img.icons8.com/color/48/000000/instagram-new.png"/></a>
+        <a href="#"><img src="https://img.icons8.com/color/48/000000/gmail.png"/></a>
+        <a href="#"><img src="https://img.icons8.com/color/48/000000/whatsapp.png"/></a>
+      </div>
+    </div>
+    <div class="footer-profile">
+      <img src="https://img.icons8.com/color/96/000000/user-male-circle--v2.png" alt="Profile" class="profile-img" id="footer-profile-img" style="cursor:pointer;" />
+      <div class="profile-footer-info">
+        <span id="footer-profile-name">Guest</span>
+      </div>
+      <div id="profile-menu" class="profile-menu" style="display:none;">
+        <ul>
+          <li><a href="signup.html" id="menu-signup">Sign Up</a></li>
+          <li><a href="#" id="menu-logout">Logout</a></li>
+          <li><a href="setting.html" id="menu-settings">Settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Chatbot -->
+<div id="chatbot">
+  <div id="chat-toggle">💬GYMX</div>
+  <div id="chat-box">
+    <div id="chat-header">Chat with us</div>
+    <div id="chat-body"></div>
+    <input type="text" id="chat-input" placeholder="Type your message..." />
+  </div>
+</div>
+
+<!-- Back to Top -->
+<div id="back-to-top">&#8679;</div>
+
+</body>
+</html>
+<!-- // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDexZBi7JfkLQYhiyib_a26ILMkkepmZLk",
+  authDomain: "gymx-42c38.firebaseapp.com",
+  projectId: "gymx-42c38",
+  storageBucket: "gymx-42c38.firebasestorage.app",
+  messagingSenderId: "871427638541",
+  appId: "1:871427638541:web:240f13929d674ca3bedc44"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig); -->
+
+<!-- <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDexZBi7JfkLQYhiyib_a26ILMkkepmZLk",
+    authDomain: "gymx-42c38.firebaseapp.com",
+    projectId: "gymx-42c38",
+    storageBucket: "gymx-42c38.firebasestorage.app",
+    messagingSenderId: "871427638541",
+    appId: "1:871427638541:web:240f13929d674ca3bedc44"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script> -->

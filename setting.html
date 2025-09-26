@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-database.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDexZBi7JfkLQYhiyib_a26ILMkkepmZLk",
+      authDomain: "gymx-42c38.firebaseapp.com",
+      projectId: "gymx-42c38",
+      storageBucket: "gymx-42c38.firebasestorage.app",
+      messagingSenderId: "871427638541",
+      appId: "1:871427638541:web:240f13929d674ca3bedc44"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth(app);
+
+    // Save profile data to Firebase Database
+    document.getElementById('profile-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const user = auth.currentUser;
+      if (!user) {
+        document.getElementById('settings-message').innerText = 'You must be logged in to update your profile.';
+        return;
+      }
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+      const gender = document.getElementById('gender').value;
+      const contact = document.getElementById('contact').value;
+      let photoUrl = document.getElementById('profile-photo-preview').src;
+      try {
+        await set(ref(db, 'users/' + user.uid + '/profile'), {
+          name,
+          age,
+          gender,
+          contact,
+          photoUrl
+        });
+        document.getElementById('settings-message').innerText = 'Profile updated!';
+      } catch (error) {
+        document.getElementById('settings-message').innerText = error.message;
+      }
+    });
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - GymX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css">
+  <script src="script1.js"></script>
+</head>
+<body>
+  <div class="settings-container">
+    <img src="https://img.icons8.com/color/96/000000/dumbbell.png" alt="GymX Logo" style="display:block;margin:0 auto 18px auto;width:64px;height:64px;cursor:pointer;" onclick="window.location.href='gym2.html'">
+    <h2>Profile Management</h2>
+    <form id="profile-form">
+      <img src="https://img.icons8.com/color/96/000000/user-male-circle--v2.png" id="profile-photo-preview" class="profile-photo-preview" alt="Profile Photo">
+      <label for="profile-photo">Upload Profile Photo</label>
+      <input type="file" id="profile-photo" accept="image/*">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your Name">
+      <label for="age">Age</label>
+      <input type="number" id="age" placeholder="Your Age">
+      <label for="gender">Gender</label>
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <label for="contact">Contact Info</label>
+      <input type="text" id="contact" placeholder="Email or Phone">
+      <button type="submit">Save Changes</button>
+    </form>
+    <div class="settings-message" id="settings-message"></div>
+  </div>
+  <nav style="text-align:center;margin-bottom:24px;">
+    <a href="gym2.html" style="margin:0 12px;color:#e60000;font-weight:bold;text-decoration:none;">Home</a>
+    <a href="signup.html" style="margin:0 12px;color:#e60000;font-weight:bold;text-decoration:none;">Sign Up</a>
+    <a href="login.html" style="margin:0 12px;color:#e60000;font-weight:bold;text-decoration:none;">Login</a>
+    <a href="forgot.html" style="margin:0 12px;color:#e60000;font-weight:bold;text-decoration:none;">Forgot Password</a>
+    <a href="setting.html" style="margin:0 12px;color:#e60000;font-weight:bold;text-decoration:none;">Settings</a>
+  </nav>
+  <!-- All JS moved to script1.js -->
+</body>
+</html>
